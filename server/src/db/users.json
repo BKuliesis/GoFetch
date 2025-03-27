@@ -190,7 +190,7 @@
       "petminder",
       "petowner"
     ],
-    "currentRole": "petowner",
+    "currentRole": "petminder",
     "primaryUserInfo": {
       "profilePic": "",
       "dob": "1995-08-25T00:00:00.000Z",
@@ -329,6 +329,49 @@
       "availability": "Flexible",
       "bookingIds": [],
       "reviewIds": []
+    }
+  },
+  {
+    "id": 8,
+    "name": {
+      "fname": "Jonathan",
+      "sname": "Doe"
+    },
+    "loginDetails": {
+      "email": "john@doemail.com",
+      "password": "johndoes"
+    },
+    "roles": [
+      "petowner"
+    ],
+    "currentRole": "petowner",
+    "primaryUserInfo": {
+      "profilePic": "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='100'%20height='100'%20viewBox='0%200%20100%20100'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20White%20background%20square%20--%3e%3crect%20width='100'%20height='100'%20fill='%23fceddc'%20/%3e%3c!--%20Head%20(circle)%20--%3e%3ccircle%20cx='50'%20cy='34'%20r='15'%20fill='%23ff8800'%20/%3e%3c!--%20Shoulders%20(closer%20to%20head%20and%20more%20prominent)%20--%3e%3cpath%20d='M20,80%20C20,58%2080,58%2080,80%20Z'%20fill='%23ff8800'%20/%3e%3c/svg%3e",
+      "dob": "2009-02-27T00:00:00.000Z",
+      "address": {
+        "street": "Mile End Road",
+        "city": "",
+        "postcode": "",
+        "country": ""
+      }
+    },
+    "ownerRoleInfo": {
+      "petIds": [],
+      "bookingIds": [],
+      "pets": [],
+      "bookings": []
+    },
+    "minderRoleInfo": {
+      "serviceIds": [],
+      "rating": 0,
+      "bio": "",
+      "pictures": [],
+      "availability": "Flexible",
+      "bookingIds": [],
+      "reviewIds": [],
+      "services": [],
+      "bookings": [],
+      "reviews": []
     }
   }
 ]
