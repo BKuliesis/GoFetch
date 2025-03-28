@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { IAddress, IUser, Role } from "../../models/IUser";
+import { IAddress, IUser, Role } from "@gofetch/models/IUser";
 import { uploadImage, editUser } from "../../services/Registry";
-import ImageViewer from "../../components/ImageViewer";
+import styles from "./ProfilePage.module.css";
+import "../../global.css"
+import defaultProfilePic from "../../assets/images/default-profile-picture.svg";
+
 
 function Profile() {
     const { user, refreshUser } = useAuth();
@@ -13,7 +16,7 @@ function Profile() {
     const [role] = useState<Role>(user.currentRole);
     const [profilePicture, setProfilePicture] = useState<string>(user.primaryUserInfo.profilePic);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const [showImageViewer, setShowImageViewer] = useState(false);
+    const [, setShowImageViewer] = useState(false);
     const [pictureFileNames, setPictureFileNames] = useState<string[]>([]);
     const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
@@ -79,81 +82,122 @@ function Profile() {
         }
     };
 
-    return (
-        <div>
-            <h2>Your Profile</h2>
+    const handleDeletePicture = async () => {
+        try {
+            const updatedUser: IUser = {
+                ...user,
+                primaryUserInfo: { 
+                    ...user.primaryUserInfo, 
+                    profilePic: defaultProfilePic
+                }
+            };
+    
+            await editUser(user.id, updatedUser);
+            setProfilePicture(defaultProfilePic);
+            await refreshUser(); 
+        } catch (error) {
+            console.error("Error deleting profile picture:", error);
+            alert("Failed to delete profile picture.");
+        }
+    };
 
-            {/* Profile Picture */}
-            <div>
+    const deleteChanges = async () => {
+        if (confirm("Are you sure you want to discard your changes?")) {
+            setName(`${user.name.fname} ${user.name.sname}`);
+            setEmail(user.loginDetails.email);
+            setAddress(user.primaryUserInfo.address);
+            setProfilePicture(user.primaryUserInfo.profilePic);
+            setSelectedFile(null);
+            setHasUnsavedChanges(false);
+            await refreshUser(); 
+        }
+    };
+    
+
+    return (
+
+        <div className={styles.page}>
+        <h2>Your Profile</h2>
+    
+        <div className={styles.imageArea}>
+            <div className={styles.img}>
                 <img 
-                    src={profilePicture || "/default-profile.png"} 
+                    src={profilePicture || "../../assets/images/default-profile-picture.svg"} 
                     alt="Profile" 
-                    onClick={() => setShowImageViewer(true)} 
-                    style={{ width: "100px", height: "100px", borderRadius: "50%", cursor: "pointer" }}
+                    onClick={() => setShowImageViewer(true)}
                 />
             </div>
-            <input type="file" accept="image/*" onChange={handleImageChange} />
-
-            {/* Image Viewer */}
-            {showImageViewer && (
-                <ImageViewer 
-                    imageSrc={profilePicture} 
-                    onClose={() => setShowImageViewer(false)} 
-                />
+            <input className = {styles.addPic} type="file" accept="image/*" onChange={handleImageChange} />
+            {profilePicture && profilePicture !== "../../assets/images/default-profile-picture.svg" && (
+                <button onClick={handleDeletePicture} className="btn btn-danger">
+                    Delete Picture
+                </button>
             )}
-
-            {/* Name */}
-            <div>
+        </div>
+    
+        {/* Right: Input Fields */}
+        <div className={styles.inputContainer}>
+            <div className={styles.input}>
                 <label>Name</label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
-
-            {/* Email */}
-            <div>
+    
+            <div className={styles.input}>
                 <label>Email</label>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-
-            {/* Address */}
-            <div>
+    
+            <div className={styles.input}>
                 <label>Street</label>
                 <input type="text" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
             </div>
-            <div>
+            <div className={styles.input}>
                 <label>City</label>
                 <input type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
             </div>
-            <div>
+            <div className={styles.input}>
                 <label>Postcode</label>
                 <input type="text" value={address.postcode} onChange={(e) => setAddress({ ...address, postcode: e.target.value })} />
             </div>
-            <div>
+            <div className={styles.input}>
                 <label>Country</label>
                 <input type="text" value={address.country} onChange={(e) => setAddress({ ...address, country: e.target.value })} />
             </div>
-
-            {/* Role */}
-            <div>
-                 <label>Registered Role/s</label>
-                 <ul>
-                     {(Array.isArray(user.roles) ? user.roles : [user.roles]).map((roleOption: Role) => (
+    
+            <div className={styles.input}>
+                <label>Registered Role/s</label>
+                <ul>
+                    {(Array.isArray(user.roles) ? user.roles : [user.roles]).map((roleOption: Role) => (
                         <li key={roleOption}>{roleOption}</li>
                     ))}
                 </ul>
             </div>
-
-            {/* Save Button */}
+    
             <div>
+                <button
+                    disabled={!hasUnsavedChanges}
+                    onClick={deleteChanges}
+                    className={`btn btn-danger ${!hasUnsavedChanges ? "disabled" : ""}`}
+                >
+                    Cancel
+                </button>
                 <button
                     disabled={!hasUnsavedChanges}
                     onClick={handleSave}
                     className={`btn btn-primary ${!hasUnsavedChanges ? "disabled" : ""}`}
                 >
-                    Save Changes
+                    Confirm
+                </button>
+                <button>
+                    <a href="../../Dashboard/profile">View</a>
                 </button>
             </div>
         </div>
+    </div>
+    
+
     );
 }
 
 export default Profile;
+
