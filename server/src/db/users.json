@@ -192,14 +192,15 @@
     ],
     "currentRole": "petminder",
     "primaryUserInfo": {
-      "profilePic": "",
+      "profilePic": "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='100'%20height='100'%20viewBox='0%200%20100%20100'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20White%20background%20square%20--%3e%3crect%20width='100'%20height='100'%20fill='%23fceddc'%20/%3e%3c!--%20Head%20(circle)%20--%3e%3ccircle%20cx='50'%20cy='34'%20r='15'%20fill='%23ff8800'%20/%3e%3c!--%20Shoulders%20(closer%20to%20head%20and%20more%20prominent)%20--%3e%3cpath%20d='M20,80%20C20,58%2080,58%2080,80%20Z'%20fill='%23ff8800'%20/%3e%3c/svg%3e",
       "dob": "1995-08-25T00:00:00.000Z",
       "address": {
         "street": "",
         "city": "Nottingham",
         "postcode": "",
         "country": ""
-      }
+      },
+      "profilePicture": "17"
     },
     "ownerRoleInfo": {
       "petIds": [
@@ -212,6 +213,94 @@
         2,
         3,
         4
+      ],
+      "pets": [
+        {
+          "id": 1,
+          "name": "Rex",
+          "dob": "2019-06-30T00:00:00.000Z",
+          "gender": "male",
+          "breed": "German Shepherd",
+          "size": "Large (30kg+)",
+          "neutered": true,
+          "behaviour": "He is very well-behaved, protective and intelligent.",
+          "allergies": "None",
+          "picture": "blob:http://localhost:5173/dbfc6af6-56df-4e03-a045-af23a22eb220"
+        },
+        {
+          "id": 2,
+          "name": "Luna",
+          "dob": "2021-02-14T00:00:00.000Z",
+          "gender": "female",
+          "breed": "Siberian Husky",
+          "size": "Medium (15-30kg)",
+          "neutered": true,
+          "behaviour": "She is very energetic and vocal.",
+          "allergies": "Dairy",
+          "picture": "blob:http://localhost:5173/050dfcd7-d620-41c9-89bb-f17a5d9e4206"
+        }
+      ],
+      "bookings": [
+        {
+          "id": 1,
+          "petId": 1,
+          "minderId": 3,
+          "ownerId": 5,
+          "serviceId": 1,
+          "time": "2025-03-28T13:00:00.000Z",
+          "notes": "He loves tennis balls!",
+          "status": "Completed",
+          "createdAt": "2025-03-25T02:15:08.717Z",
+          "updatedAt": "2025-03-25T02:18:29.113Z"
+        },
+        {
+          "id": 2,
+          "petId": 2,
+          "minderId": 4,
+          "ownerId": 5,
+          "serviceId": 3,
+          "time": "2025-03-30T11:00:00.000Z",
+          "notes": "She needs company at night.",
+          "status": "Pending",
+          "createdAt": "2025-03-25T02:16:18.154Z",
+          "updatedAt": "2025-03-25T02:16:18.154Z"
+        },
+        {
+          "id": 3,
+          "petId": 2,
+          "minderId": 3,
+          "ownerId": 5,
+          "serviceId": 2,
+          "time": "2025-03-26T15:30:00.000Z",
+          "notes": " She will not leave your side.",
+          "status": "Pending",
+          "createdAt": "2025-03-25T02:17:32.807Z",
+          "updatedAt": "2025-03-25T02:17:32.807Z"
+        },
+        {
+          "id": 4,
+          "petId": 1,
+          "minderId": 5,
+          "ownerId": 5,
+          "serviceId": 5,
+          "time": "2025-03-28T15:30:00.000Z",
+          "notes": "He loves tennis balls!",
+          "status": "Completed",
+          "createdAt": "2025-03-25T02:48:00.163Z",
+          "updatedAt": "2025-03-26T16:15:02.257Z"
+        },
+        {
+          "id": 7,
+          "petId": 1,
+          "minderId": 5,
+          "ownerId": 5,
+          "serviceId": 5,
+          "time": "2025-04-05T03:48:00.000Z",
+          "notes": "None",
+          "status": "Completed",
+          "createdAt": "2025-03-27T01:48:46.001Z",
+          "updatedAt": "2025-03-27T01:49:17.385Z"
+        }
       ]
     },
     "minderRoleInfo": {
@@ -222,9 +311,9 @@
       "rating": 3.666666666666667,
       "bio": "Pet owner and minder with a passion for animals, especially dogs!",
       "pictures": [
-        "1",
-        "2",
-        "3"
+        "blob:http://localhost:5173/d117207c-f783-4b19-bbd7-c195323a9e7a",
+        "blob:http://localhost:5173/98632b36-879a-4113-b601-d435e29ae98b",
+        "blob:http://localhost:5173/5578b705-d3c5-46cd-b1ed-b88d8fce2704"
       ],
       "availability": "Flexible",
       "bookingIds": [
@@ -236,6 +325,87 @@
         1,
         5,
         7
+      ],
+      "services": [
+        {
+          "id": 5,
+          "type": "Training",
+          "duration": "45 minutes",
+          "price": 35
+        },
+        {
+          "id": 6,
+          "type": "Home Visit",
+          "duration": "15 minutes",
+          "price": 10
+        }
+      ],
+      "bookings": [
+        {
+          "id": 4,
+          "petId": 1,
+          "minderId": 5,
+          "ownerId": 5,
+          "serviceId": 5,
+          "time": "2025-03-28T15:30:00.000Z",
+          "notes": "He loves tennis balls!",
+          "status": "Completed",
+          "createdAt": "2025-03-25T02:48:00.163Z",
+          "updatedAt": "2025-03-26T16:15:02.257Z"
+        },
+        {
+          "id": 6,
+          "petId": 5,
+          "minderId": 5,
+          "ownerId": 7,
+          "serviceId": 5,
+          "time": "2025-03-29T18:00:00.000Z",
+          "notes": "Teach her how to do a barrel roll.",
+          "status": "Completed",
+          "createdAt": "2025-03-26T00:16:33.827Z",
+          "updatedAt": "2025-03-27T01:28:55.746Z"
+        },
+        {
+          "id": 7,
+          "petId": 1,
+          "minderId": 5,
+          "ownerId": 5,
+          "serviceId": 5,
+          "time": "2025-04-05T03:48:00.000Z",
+          "notes": "None",
+          "status": "Completed",
+          "createdAt": "2025-03-27T01:48:46.001Z",
+          "updatedAt": "2025-03-27T01:49:17.385Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "rating": 5,
+          "review": "",
+          "date": "2025-03-27T02:09:15.862Z",
+          "reviewerId": 5,
+          "revieweeId": 5,
+          "bookingId": 7
+        },
+        {
+          "id": 5,
+          "rating": 1,
+          "review": "Tried to steal my dog!",
+          "date": "2025-03-27T02:13:06.165Z",
+          "reviewerId": 5,
+          "revieweeId": 5,
+          "bookingId": 4
+        },
+        {
+          "id": 7,
+          "rating": 5,
+          "review": "Taught my dog how to do a barrel roll! I thought it was impossible. Highly recommend.",
+          "date": "2025-03-27T02:14:53.290Z",
+          "reviewerId": 7,
+          "revieweeId": 5,
+          "bookingId": 6
+        }
       ]
     }
   },
@@ -334,7 +504,7 @@
   {
     "id": 8,
     "name": {
-      "fname": "Jonathan",
+      "fname": "John",
       "sname": "Doe"
     },
     "loginDetails": {
@@ -346,14 +516,15 @@
     ],
     "currentRole": "petowner",
     "primaryUserInfo": {
-      "profilePic": "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='100'%20height='100'%20viewBox='0%200%20100%20100'%20xmlns='http://www.w3.org/2000/svg'%3e%3c!--%20White%20background%20square%20--%3e%3crect%20width='100'%20height='100'%20fill='%23fceddc'%20/%3e%3c!--%20Head%20(circle)%20--%3e%3ccircle%20cx='50'%20cy='34'%20r='15'%20fill='%23ff8800'%20/%3e%3c!--%20Shoulders%20(closer%20to%20head%20and%20more%20prominent)%20--%3e%3cpath%20d='M20,80%20C20,58%2080,58%2080,80%20Z'%20fill='%23ff8800'%20/%3e%3c/svg%3e",
+      "profilePic": null,
       "dob": "2009-02-27T00:00:00.000Z",
       "address": {
         "street": "Mile End Road",
         "city": "",
         "postcode": "",
         "country": ""
-      }
+      },
+      "profilePicture": "17"
     },
     "ownerRoleInfo": {
       "petIds": [],
