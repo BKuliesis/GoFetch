@@ -61,7 +61,7 @@ function Profile() {
             primaryUserInfo: { 
                 ...user.primaryUserInfo, 
                 address,
-                profilePicture: updatedProfilePicture
+                profilePic: updatedProfilePicture
             }
         }
         const newPictureFileNames = [...pictureFileNames, ...updatedProfilePicture];
